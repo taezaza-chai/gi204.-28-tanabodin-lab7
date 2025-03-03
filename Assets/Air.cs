@@ -9,8 +9,8 @@ public class Air : MonoBehaviour
     [SerializeField] float angularDrag = 0.001f;
     [SerializeField]  float yawPower = 50f;
     [SerializeField] float pitchPower = 50f;
-
-    [SerializeField] private float rollPower = 50f;
+    [SerializeField] private float rollPower = 30f;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,9 +32,9 @@ public class Air : MonoBehaviour
             float pitch = Input.GetAxis("Vertical") * pitchPower;
             float roll = Input.GetAxis("roll") * rollPower;
             
-            rb.AddForce(transform.up * yaw);
-            rb.AddForce(transform.right * pitch);
-            rb.AddForce(transform.forward * roll);
+            rb.AddTorque(transform.up * yaw);
+            rb.AddTorque(transform.right * pitch);
+            rb.AddTorque(transform.forward * roll);
         }
     }
 }
